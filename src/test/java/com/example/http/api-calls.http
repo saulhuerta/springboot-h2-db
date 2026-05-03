@@ -1,0 +1,48 @@
+### Configuración de Variables
+@host = http://localhost:8080/api
+
+### 1. Obtener todos los departamentos
+GET {{host}}/departments
+Accept: application/json
+
+###
+
+### 2. Crear un nuevo departamento (Engineering)
+POST {{host}}/departments
+Content-Type: application/json
+
+{
+  "name": "Engineering"
+}
+
+###
+
+### 3. Obtener todos los empleados
+GET {{host}}/employees
+Accept: application/json
+
+###
+
+### 4. Crear un nuevo empleado (Usando el Record separado)
+POST {{host}}/employees
+Content-Type: application/json
+
+{
+  "firstName": "Juanito",
+  "lastName": "Perez",
+  "email": "j.p@dev.com",
+  "departmentName": "Engineering"
+}
+
+###
+
+### 5. Actualizar un empleado (PUT)
+PUT {{host}}/employees/1
+Content-Type: application/json
+
+{
+  "firstName": "Juanito",
+  "lastName": "Perez",
+  "email": "juanito.architect@dev.com",
+  "departmentName": "Engineering"
+}
