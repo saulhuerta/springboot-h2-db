@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix | Nodos de Red</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF41;
+            font-family: 'Courier New', monospace;
+            padding: 40px;
+            margin: 0;
+        }
+        .header {
+            border-bottom: 2px solid #00FF41;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 { text-shadow: 0 0 10px #00FF41; margin: 0; font-size: 1.5rem; }
+        
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            background: rgba(0, 20, 0, 0.8);
+        }
+        .matrix-table th, .matrix-table td {
+            border: 1px solid #004411;
+            padding: 12px;
+            text-align: left;
+        }
+        .matrix-table th {
+            background-color: #004411;
+            color: #00FF41;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        .matrix-table tr:hover {
+            background-color: rgba(0, 255, 65, 0.1);
+        }
+
+        .btn {
+            display: inline-block;
+            color: #00FF41;
+            text-decoration: none;
+            border: 1px solid #00FF41;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #00FF41;
+            color: #000;
+            box-shadow: 0 0 15px #00FF41;
+        }
+        .nav-links {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>> LISTADO_DE_NODOS_SISTEMA</h1>
+        <a th:href="@{/view/departments/add}" class="btn">+ INSERTAR_NUEVO_NODO</a>
+    </div>
+
+	<table class="matrix-table">
+	    <thead>
+	        <tr>
+	            <th>ID_SEC</th>
+	            <th>NOMBRE_NODO</th>
+	            <th>CAPACIDAD_AGENTES</th> 
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr th:each="dept : ${departments}">
+	            <td th:text="${dept.id()}">0</td>
+	            <td th:text="${dept.name()}">DEPARTAMENTO</td>
+	            <!-- Aquí se muestra el conteo calculado en el Service -->
+	            <td th:text="${dept.employeeCount()}">0</td>
+	        </tr>
+	    </tbody>
+	</table>
+
+    <div class="nav-links">
+        <a th:href="@{/}" class="btn">_VOLVER_AL_INDEX</a>
+        <a th:href="@{/view/employees}" class="btn">_VER_AGENTES</a>
+    </div>
+
+</body>
+</html>

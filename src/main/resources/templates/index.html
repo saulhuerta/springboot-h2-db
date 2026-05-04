@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix | Portal de Acceso</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF41;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            border: 2px solid #00FF41;
+            padding: 50px;
+            box-shadow: 0 0 20px #008F11;
+            background: rgba(0, 20, 0, 0.9);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00FF41;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: #008F11;
+        }
+
+        .btn-matrix {
+            color: #00FF41;
+            text-decoration: none;
+            border: 1px solid #00FF41;
+            padding: 15px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-matrix:hover {
+            background-color: #00FF41;
+            color: #000;
+            box-shadow: 0 0 30px #00FF41;
+            cursor: pointer;
+        }
+
+        .warning {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #FF0000;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>NÓMINA OS</h1>
+        <p>[ SISTEMA DE GESTIÓN DE AGENTES V1.0 ]</p>
+        
+		<div class="menu-grid">
+		    <a th:href="@{/view/employees}" class="btn-matrix">GESTIONAR AGENTES</a>
+		    <a th:href="@{/view/departments}" class="btn-matrix">GESTIONAR NODOS (DEPTOS)</a>
+		</div>
+
+        <div class="warning">
+            ** ACCESO RESTRINGIDO **
+        </div>
+    </div>
+
+    <!-- Efecto visual simple de terminal -->
+    <script>
+        console.log("Conexión establecida... Bienvenido, Arquitecto.");
+    </script>
+
+</body>
+</html>

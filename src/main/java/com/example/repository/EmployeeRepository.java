@@ -11,4 +11,7 @@ import com.example.domain.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	List<Employee> findByDepartmentName(String departmentName);
 
+	// Spring genera: SELECT COUNT(*) FROM employees WHERE department_name = ?
+	long countByDepartmentName(String departmentName);
+
 }

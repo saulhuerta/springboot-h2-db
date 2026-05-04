@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Matrix | Nuevo Nodo</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF41;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            border: 1px solid #00FF41;
+            padding: 30px;
+            box-shadow: 0 0 15px #008F11;
+            background: rgba(0, 10, 0, 0.9);
+            width: 400px;
+        }
+        h2 { text-align: center; text-shadow: 0 0 5px #00FF41; }
+        .input-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.8rem; }
+        input {
+            width: 100%;
+            background: #000;
+            border: 1px solid #00FF41;
+            color: #00FF41;
+            padding: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+        input:focus { box-shadow: 0 0 10px #00FF41; }
+        .btn-save {
+            width: 100%;
+            background: transparent;
+            border: 1px solid #00FF41;
+            color: #00FF41;
+            padding: 10px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .btn-save:hover { background: #00FF41; color: #000; }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #008F11;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>> REGISTRAR_NODO</h2>
+        <form th:action="@{/view/departments/save}" th:object="${department}" method="post">
+            <div class="input-group">
+                <label>NOMBRE DEL DEPARTAMENTO:</label>
+                <!-- Usamos .name() porque tu DepartmentDTO es un Record -->
+                <input type="text" th:field="*{name}" placeholder="Eje: CYBERSECURITY" required>
+            </div>
+            <button type="submit" class="btn-save">_EJECUTAR_INSERCIÓN</button>
+        </form>
+        <a th:href="@{/view/departments}" class="back-link">_CANCELAR_Y_VOLVER</a>
+    </div>
+</body>
+</html>

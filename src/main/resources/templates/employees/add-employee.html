@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Matrix | Registro</title>
+    <style>
+        body { background-color: #000; color: #00FF41; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .form-container { border: 1px solid #00FF41; padding: 30px; box-shadow: 0 0 20px #00FF41; width: 400px; }
+        h2 { text-align: center; text-transform: uppercase; margin-bottom: 25px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-size: 0.8em; }
+        input, select { 
+            width: 100%; background: #000; border: 1px solid #008F11; 
+            color: #00FF41; padding: 8px; box-sizing: border-box; outline: none;
+        }
+        input:focus { border-color: #00FF41; box-shadow: 0 0 5px #00FF41; }
+        .btn-submit { 
+            width: 100%; background: #00FF41; color: #000; border: none; 
+            padding: 10px; cursor: pointer; font-weight: bold; margin-top: 15px;
+        }
+        .btn-submit:hover { background: #008F11; color: #FFF; }
+        .back-link { display: block; text-align: center; margin-top: 15px; color: #008F11; text-decoration: none; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>[ REGISTRAR EMPLEADO ]</h2>
+        
+        <!-- th:object vincula el formulario con el DTO del Model -->
+        <form th:action="@{/view/employees/save}" th:object="${employee}" method="POST">
+            <div class="input-group">
+                <label>NOMBRE:</label>
+                <input type="text" th:field="*{firstName}" required placeholder="Escribe el nombre...">
+            </div>
+            <div class="input-group">
+                <label>APELLIDO:</label>
+                <input type="text" th:field="*{lastName}" required>
+            </div>
+            <div class="input-group">
+                <label>EMAIL:</label>
+                <input type="email" th:field="*{email}" required>
+            </div>
+			<div class="input-group">
+			    <label>DEPARTAMENTO:</label>
+			    <select th:field="*{departmentName}" required>
+			        <option value="" disabled selected>-- SELECCIONAR DEPARTAMENTO --</option>
+			        <option th:each="dept : ${departments}" 
+			                th:value="${dept.name()}" 
+			                th:text="${dept.name()}"></option>
+			    </select>
+			</div>
+            
+			<button type="submit" class="btn-save" style="flex: 2;">
+			        _EJECUTAR_INSERCIÓN
+		    </button>
+		    
+		    <!-- Botón de cancelación/retorno -->
+		    <a th:href="@{/view/employees}" class="btn" style="flex: 1; text-align: center; text-decoration: none; line-height: 2.2;">
+		        _CANCELAR
+		    </a>
+        </form>
+        
+    </div>
+</body>
+</html>
